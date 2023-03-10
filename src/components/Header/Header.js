@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <React.Fragment>
       <header className={styles.header}>
-        <h1>Kumka Services</h1>
+        <h2>Kumka Services</h2>
         <CartButton />
       </header>
       <div className={styles['main-image']}>
