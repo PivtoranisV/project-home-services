@@ -18,7 +18,7 @@ const DUMMY_SERVICES = [
     name: 'Bedroom Cleaning',
     description:
       'Our professionals will change your bed sheets if necessary, dust all the wardrobes, and ensure that your bedroom is fresh after they leave.',
-    price: 7.99,
+    price: 7.5,
   },
   {
     id: 's4',
@@ -32,7 +32,7 @@ const DUMMY_SERVICES = [
     name: 'Bathroom Cleaning',
     description:
       'The bathroom cleaning includes scrubbing sinks and bathtubs, disposing of waste in your bathroom, and cleaning the mats',
-    price: 9.99,
+    price: 9.5,
   },
 ];
 

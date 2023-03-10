@@ -1,11 +1,12 @@
 import React from 'react';
+import Card from '../UI/Card';
 import DUMMY_SERVICES from './dummyServices';
 import styles from './ListServices.module.css';
-import Service from './Service';
+import ServiceItem from './ServiceItem';
 
 const ListServices = () => {
   const servicesList = DUMMY_SERVICES.map((service) => (
-    <Service
+    <ServiceItem
       name={service.name}
       description={service.description}
       price={service.price}
@@ -15,7 +16,9 @@ const ListServices = () => {
 
   return (
     <section className={styles.services}>
-      <ul>{servicesList}</ul>
+      <Card>
+        <ul>{servicesList}</ul>
+      </Card>
     </section>
   );
 };
