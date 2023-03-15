@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './ServiceItem.module.css';
+import ServiceItemForm from './ServiceItemForm';
 
 const Service = (props) => {
   return (
@@ -10,7 +11,7 @@ const Service = (props) => {
         <div className={styles.price}>${props.price.toFixed(2)}</div>
       </div>
       <div>
-        <input />
+        <ServiceItemForm />
       </div>
     </li>
   );
