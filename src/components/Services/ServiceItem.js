@@ -11,7 +11,7 @@ const Service = (props) => {
         <div className={styles.price}>${props.price.toFixed(2)}</div>
       </div>
       <div>
-        <ServiceItemForm />
+        <ServiceItemForm id={props.id} />
       </div>
     </li>
   );

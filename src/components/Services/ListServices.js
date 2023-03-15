@@ -7,6 +7,7 @@ import ServiceItem from './ServiceItem';
 const ListServices = () => {
   const servicesList = DUMMY_SERVICES.map((service) => (
     <ServiceItem
+      id={service.id}
       name={service.name}
       description={service.description}
       price={service.price}
