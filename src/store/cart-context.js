@@ -1,9 +1,9 @@
 import React from 'react';
 
 const CartContext = React.createContext({
-  items: [],
+  services: [],
   totalAmount: 0,
-  addItem: (item) => {},
+  addItem: (service) => {},
   removeItem: (id) => {},
 });
 
