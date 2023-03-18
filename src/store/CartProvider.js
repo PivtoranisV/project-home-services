@@ -9,11 +9,11 @@ const defaultCart = {
 
 const cartReducer = (state, action) => {
   if (action.type === 'ADD') {
-    const updatedServices = state.services.concat(action.services);
+    const updatedServices = state.services.concat(action.service);
     const updatedAmount =
-      state.totalAmount + action.services.price * action.services.hours;
+      state.totalAmount + action.service.price * action.service.hours;
     return {
-      service: updatedServices,
+      services: updatedServices,
       totalAmount: updatedAmount,
     };
   }
@@ -23,18 +23,18 @@ const cartReducer = (state, action) => {
 const CartProvider = (props) => {
   const [cartState, dispatchCart] = useReducer(cartReducer, defaultCart);
 
-  const addItemHandler = (service) => {
+  const addServiceHandler = (service) => {
     dispatchCart({ type: 'ADD', service: service });
   };
-  const removeItemHandler = (id) => {
+  const removeServiceHandler = (id) => {
     dispatchCart({ type: 'REMOVE', id: id });
   };
 
   const cartContext = {
     services: cartState.services,
     totalAmount: cartState.totalAmount,
-    addItem: addItemHandler,
-    removeItem: removeItemHandler,
+    addService: addServiceHandler,
+    removeService: removeServiceHandler,
   };
 
   return (
