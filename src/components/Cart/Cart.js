@@ -12,8 +12,12 @@ const Cart = (props) => {
     return prev + current.hours;
   }, 0);
 
-  const addHandler = () => {};
-  const removeHandler = () => {};
+  const addHandler = (service) => {
+    ctx.addService({ ...service, hours: 1 });
+  };
+  const removeHandler = (id) => {
+    ctx.removeService(id);
+  };
 
   const cartItems = (
     <ul className={styles['cart-items']}>
@@ -23,8 +27,8 @@ const Cart = (props) => {
           name={service.name}
           price={service.price}
           hours={service.hours}
-          onRemove={removeHandler}
-          onAdd={addHandler}
+          onRemove={removeHandler.bind(null, service.id)}
+          onAdd={addHandler.bind(null, service)}
         />
       ))}
     </ul>

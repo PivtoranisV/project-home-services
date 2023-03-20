@@ -34,6 +34,31 @@ const cartReducer = (state, action) => {
       totalAmount: updatedAmount,
     };
   }
+  if (action.type === 'REMOVE') {
+    const existingServiceIndex = state.services.findIndex(
+      (service) => service.id === action.id
+    );
+    const existingService = state.services[existingServiceIndex];
+    const updatedAmount = Math.abs(state.totalAmount - existingService.price);
+
+    let updatedServices;
+    if (existingService.hours === 1) {
+      updatedServices = state.services.filter(
+        (service) => service.id !== action.id
+      );
+    } else {
+      const updatedService = {
+        ...existingService,
+        hours: existingService.hours - 1,
+      };
+      updatedServices = [...state.services];
+      updatedServices[existingServiceIndex] = updatedService;
+    }
+    return {
+      services: updatedServices,
+      totalAmount: updatedAmount,
+    };
+  }
   return defaultCart;
 };
 
