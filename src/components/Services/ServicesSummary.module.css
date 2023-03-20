@@ -1,5 +1,4 @@
 .summary {
-    text-align: justify;
     max-width: 40rem;
     width: 85%;
     margin: auto;
@@ -10,10 +9,28 @@
     border-radius: 14px;
     padding: 1rem;
     box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .summary h2 {
-    text-align: center;
     font-size: 2rem;
     margin-top: 0;
+}
+
+.summary button {
+    cursor: pointer;
+    font: inherit;
+    border: none;
+    background-color: #317e9c;
+    color: #fcfcd0;
+    padding: 0.75rem 1.5rem;
+    border-radius: 14px;
+    font-weight: bold;
+}
+
+.summary button:hover,
+.summary button:active {
+    background-color: #0f455b;
 }
