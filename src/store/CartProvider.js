@@ -9,7 +9,24 @@ const defaultCart = {
 
 const cartReducer = (state, action) => {
   if (action.type === 'ADD') {
-    const updatedServices = state.services.concat(action.service);
+    const existingServiceIndex = state.services.findIndex(
+      (service) => service.id === action.service.id
+    );
+    const existingService = state.services[existingServiceIndex];
+
+    let updatedServices;
+
+    if (existingService) {
+      const updatedService = {
+        ...existingService,
+        hours: existingService.hours + action.service.hours,
+      };
+      updatedServices = [...state.services];
+      updatedServices[existingServiceIndex] = updatedService;
+    } else {
+      updatedServices = state.services.concat(action.service);
+    }
+
     const updatedAmount =
       state.totalAmount + action.service.price * action.service.hours;
     return {

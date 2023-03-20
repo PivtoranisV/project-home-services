@@ -12,6 +12,9 @@ const Cart = (props) => {
     return prev + current.hours;
   }, 0);
 
+  const addHandler = () => {};
+  const removeHandler = () => {};
+
   const cartItems = (
     <ul className={styles['cart-items']}>
       {ctx.services.map((service) => (
@@ -20,6 +23,8 @@ const Cart = (props) => {
           name={service.name}
           price={service.price}
           hours={service.hours}
+          onRemove={removeHandler}
+          onAdd={addHandler}
         />
       ))}
     </ul>
