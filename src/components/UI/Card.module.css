@@ -3,4 +3,6 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     border-radius: 14px;
     background-color: #fcfcd0;
+    margin-top: -10rem;
+    position: relative;
 }
