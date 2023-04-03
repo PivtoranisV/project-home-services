@@ -9,3 +9,10 @@
     margin: 0;
     padding: 0;
 }
+
+.loading,
+.error {
+    color: #fcfcd0;
+    text-align: center;
+    font-size: xx-large;
+}
