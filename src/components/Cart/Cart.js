@@ -56,7 +56,7 @@ const Cart = (props) => {
 
   return (
     <Modal onHideCart={props.onHideCart}>
-      {cartItems}
+      {!shownCheckout && cartItems}
       <div className={styles.total}>
         <div>
           <span>Total Hours</span>
