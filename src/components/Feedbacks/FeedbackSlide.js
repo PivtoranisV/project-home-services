@@ -1,28 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import useData from '../../hooks/use-data';
+
+const transformData = (dataObj) => {
+  const loadedData = [];
+  for (const key in dataObj) {
+    loadedData.push({
+      id: key,
+      name: dataObj[key].name,
+      feedback: dataObj[key].feedback,
+      date: dataObj[key].date,
+    });
+  }
+  return loadedData;
+};
+const url =
+  'https://home-services-40fc3-default-rtdb.firebaseio.com/feedback.json';
 
 const FeedbackSlide = () => {
-  const [loadedFeedback, setLoadedFeedback] = useState([]);
+  const [data, isLoading, error] = useData(url, transformData);
 
-  useEffect(() => {
-    fetch(
-      'https://home-services-40fc3-default-rtdb.firebaseio.com/feedback.json'
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const loadedData = [];
-        for (const key in data) {
-          loadedData.push({
-            id: key,
-            name: data[key].name,
-            feedback: data[key].feedback,
-            date: data[key].date,
-          });
-          setLoadedFeedback(loadedData);
-        }
-      });
-  }, []);
+  if (isLoading) {
+    return (
+      <section>
+        <p>Loading...</p>
+      </section>
+    );
+  }
 
-  const feedback = loadedFeedback.map((el) => (
+  if (error) {
+    return (
+      <section>
+        <p>{error.message}</p>
+      </section>
+    );
+  }
+
+  const feedback = data.map((el) => (
     <div key={el.id}>
       <p>{el.feedback}</p>
       <p>{el.name}</p>

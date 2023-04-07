@@ -1,39 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import useData from '../../hooks/use-data';
 import Card from '../UI/Card';
 import styles from './ListServices.module.css';
 import ServiceItem from './ServiceItem';
 
-const ListServices = () => {
-  const [services, setServices] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+const transformData = (dataObj) => {
+  const loadedData = [];
+  for (const key in dataObj) {
+    loadedData.push({
+      id: key,
+      name: dataObj[key].name,
+      description: dataObj[key].description,
+      price: dataObj[key].price,
+    });
+  }
+  return loadedData;
+};
+const url =
+  'https://home-services-40fc3-default-rtdb.firebaseio.com/services.json';
 
-  useEffect(() => {
-    setIsLoading(true);
-    fetch(
-      'https://home-services-40fc3-default-rtdb.firebaseio.com/services.json'
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch services.');
-        }
-        return response.json();
-      })
-      .catch((error) => setError(error))
-      .then((data) => {
-        const loadedData = [];
-        for (const key in data) {
-          loadedData.push({
-            id: key,
-            name: data[key].name,
-            description: data[key].description,
-            price: data[key].price,
-          });
-        }
-        setServices(loadedData);
-        setIsLoading(false);
-      });
-  }, []);
+const ListServices = () => {
+  const [data, isLoading, error] = useData(url, transformData);
 
   if (isLoading) {
     return (
@@ -51,7 +37,7 @@ const ListServices = () => {
     );
   }
 
-  const servicesList = services.map((service) => (
+  const servicesList = data.map((service) => (
     <ServiceItem
       id={service.id}
       name={service.name}
