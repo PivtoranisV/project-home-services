@@ -11,6 +11,7 @@ const CheckOut = (props) => {
     blurHandler: nameBlurHandler,
     reset: resetName,
   } = useInput((value) => value.trim() !== '');
+
   const {
     value: addressInput,
     validValue: validAddress,
@@ -19,6 +20,7 @@ const CheckOut = (props) => {
     blurHandler: addressBlurHandler,
     reset: resetAddress,
   } = useInput((value) => value.trim() !== '');
+
   const {
     value: postalInput,
     validValue: validPostal,
@@ -27,6 +29,7 @@ const CheckOut = (props) => {
     blurHandler: postalBlurHandler,
     reset: resetPostal,
   } = useInput((value) => value.trim().length === 5);
+
   const {
     value: cityInput,
     validValue: validCity,
