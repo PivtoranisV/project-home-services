@@ -1,4 +1,5 @@
 import React from 'react';
+import FeedbackSlide from './FeedbackSlide';
 
 const Feedback = () => {
   return (
@@ -8,6 +9,9 @@ const Feedback = () => {
         Kumka Services has been rated 4.8 out of 5 based on 962 reviews as of
         April 2023.
       </h3>
+      <div>
+        <FeedbackSlide />
+      </div>
     </div>
   );
 };
