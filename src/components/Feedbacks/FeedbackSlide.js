@@ -2,6 +2,8 @@ import useData from '../../hooks/use-data';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import './Sliders.css';
+import styles from './FeedbackSlide.module.css';
 
 const transformData = (dataObj) => {
   const loadedData = [];
@@ -49,9 +51,10 @@ const FeedbackSlide = () => {
 
   const feedback = data.map((el) => (
     <div key={el.id}>
-      <p>{el.feedback}</p>
-      <p>{el.name}</p>
-      <p>{el.date}</p>
+      <p className={styles.feedback}>{el.feedback}</p>
+      <p className={styles.date}>{el.date}</p>
+      <div className={styles.line}></div>
+      <p className={styles.name}>~~~{el.name}~~~</p>
     </div>
   ));
 

@@ -1,0 +1,21 @@
+.feedback {
+    font-size: larger;
+    text-align: justify;
+}
+
+.line {
+    background-color: #8a2b06;
+    border-radius: 14px;
+    padding: 0.2rem;
+    width: 25%;
+    margin: auto;
+}
+
+.name {
+    text-align: center;
+    color: #8a2b06;
+}
+
+.date {
+    text-align: end;
+}
