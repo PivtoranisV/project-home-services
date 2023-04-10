@@ -1,4 +1,7 @@
 import useData from '../../hooks/use-data';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const transformData = (dataObj) => {
   const loadedData = [];
@@ -17,6 +20,16 @@ const url =
 
 const FeedbackSlide = () => {
   const [data, isLoading, error] = useData(url, transformData);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   if (isLoading) {
     return (
@@ -42,7 +55,7 @@ const FeedbackSlide = () => {
     </div>
   ));
 
-  return <div>{feedback}</div>;
+  return <Slider {...settings}>{feedback}</Slider>;
 };
 
 export default FeedbackSlide;
