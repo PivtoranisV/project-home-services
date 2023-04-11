@@ -55,3 +55,14 @@
     background-color: #7ebfd9;
     color: #fcfcd0;
 }
+
+.confirmed {
+    color: #0f455b;
+    text-align: center;
+    box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+}
+
+.confirmed p {
+    padding-bottom: 1rem;
+}

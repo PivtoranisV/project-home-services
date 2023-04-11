@@ -7,6 +7,8 @@ import CheckOut from './CheckOut';
 
 const Cart = (props) => {
   const [shownCheckout, setShownCheckout] = useState(false);
+  const [isOrdering, setIsOrdering] = useState(false);
+  const [didOrder, setDidOrder] = useState(false);
 
   const ctx = useContext(CartContext);
   const totalAmount = `$${ctx.totalAmount.toFixed(2)}`;
@@ -24,6 +26,22 @@ const Cart = (props) => {
 
   const orderHandler = () => {
     setShownCheckout(true);
+  };
+
+  const confirmHandler = async (userData) => {
+    setIsOrdering(true);
+    await fetch(
+      'https://home-services-40fc3-default-rtdb.firebaseio.com/orders.json',
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          user: userData,
+          order: ctx.services,
+        }),
+      }
+    );
+    setIsOrdering(false);
+    setDidOrder(true);
   };
 
   const cartItems = (
@@ -54,8 +72,8 @@ const Cart = (props) => {
     </div>
   );
 
-  return (
-    <Modal onHideCart={props.onHideCart}>
+  const cartContent = (
+    <React.Fragment>
       {!shownCheckout && cartItems}
       <div className={styles.total}>
         <div>
@@ -67,8 +85,34 @@ const Cart = (props) => {
           <span className={styles.amount}>{totalAmount}</span>
         </div>
       </div>
-      {shownCheckout && <CheckOut onHideCart={props.onHideCart} />}
+      {shownCheckout && (
+        <CheckOut onHideCart={props.onHideCart} onConfirm={confirmHandler} />
+      )}
       {!shownCheckout && formButtons}
+    </React.Fragment>
+  );
+
+  const orderingContent = <h2>Sending order...</h2>;
+
+  const orderedContent = (
+    <React.Fragment>
+      <div className={styles.confirmed}>
+        <h1>Order completed</h1>
+        <p>Thank you for choosing Kumka Services</p>
+      </div>
+      <div className={styles.actions}>
+        <button className={styles.close} onClick={props.onHideCart}>
+          Close
+        </button>
+      </div>
+    </React.Fragment>
+  );
+
+  return (
+    <Modal onHideCart={props.onHideCart}>
+      {!isOrdering && !didOrder && cartContent}
+      {isOrdering && orderingContent}
+      {didOrder && orderedContent}
     </Modal>
   );
 };

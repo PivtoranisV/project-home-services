@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useInput from '../../hooks/use-input';
 import styles from './CheckOut.module.css';
+import CartContext from '../../store/cart-context';
 
 const CheckOut = (props) => {
+  const ctx = useContext(CartContext);
+
   const {
     value: nameInput,
     validValue: validName,
@@ -47,11 +50,17 @@ const CheckOut = (props) => {
     if (!formIsValid) {
       return;
     }
-
+    props.onConfirm({
+      name: nameInput,
+      address: addressInput,
+      city: cityInput,
+      postal: postalInput,
+    });
     resetName();
     resetAddress();
     resetPostal();
     resetCity();
+    ctx.clearCard();
   };
 
   const nameInputClasses = `${styles.control} ${
