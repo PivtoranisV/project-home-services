@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Services from './components/Services/Services';
 import CartProvider from './store/CartProvider';
 import Feedbacks from './components/Feedbacks/Feedbacks';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -24,6 +25,9 @@ function App() {
         {cartIsShown && <Cart onHideCart={hideCartHandler} />}
         <Feedbacks />
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </CartProvider>
   );
 }
