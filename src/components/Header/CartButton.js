@@ -1,11 +1,20 @@
 import React, { useContext, useState, useEffect } from 'react';
 import CartContext from '../../store/cart-context';
 import CartIcon from '../Cart/CartIcon';
+import { useDispatch } from 'react-redux';
+import { showCartAction } from '../../store/cart-ui-slice';
+
 import styles from './CartButton.module.css';
 
-const CartButton = (props) => {
+const CartButton = () => {
   const [animationShown, setAnimationShown] = useState(false);
   const ctx = useContext(CartContext);
+
+  const dispatch = useDispatch();
+
+  const showCartHandler = () => {
+    dispatch(showCartAction.showCart());
+  };
 
   const { services } = ctx;
 
@@ -31,7 +40,7 @@ const CartButton = (props) => {
   }, [services]);
 
   return (
-    <button className={btnClasses} onClick={props.onShowCart}>
+    <button className={btnClasses} onClick={showCartHandler}>
       <span className={styles.icon}>
         <CartIcon />
       </span>

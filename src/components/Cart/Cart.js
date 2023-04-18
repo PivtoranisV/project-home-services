@@ -1,14 +1,22 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, Fragment } from 'react';
 import CartContext from '../../store/cart-context';
 import Modal from '../UI/Modal';
 import styles from './Cart.module.css';
 import CartItem from './CartItem';
 import CheckOut from './CheckOut';
+import { useDispatch } from 'react-redux';
+import { showCartAction } from '../../store/cart-ui-slice';
 
-const Cart = (props) => {
+const Cart = () => {
   const [shownCheckout, setShownCheckout] = useState(false);
   const [isOrdering, setIsOrdering] = useState(false);
   const [didOrder, setDidOrder] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const hideCartHandler = () => {
+    dispatch(showCartAction.hideCart());
+  };
 
   const ctx = useContext(CartContext);
   const totalAmount = `$${ctx.totalAmount.toFixed(2)}`;
@@ -61,7 +69,7 @@ const Cart = (props) => {
 
   const formButtons = (
     <div className={styles.actions}>
-      <button className={styles.close} onClick={props.onHideCart}>
+      <button className={styles.close} onClick={hideCartHandler}>
         Close
       </button>
       {hasServices && (
@@ -73,7 +81,7 @@ const Cart = (props) => {
   );
 
   const cartContent = (
-    <React.Fragment>
+    <Fragment>
       {!shownCheckout && cartItems}
       <div className={styles.total}>
         <div>
@@ -85,31 +93,29 @@ const Cart = (props) => {
           <span className={styles.amount}>{totalAmount}</span>
         </div>
       </div>
-      {shownCheckout && (
-        <CheckOut onHideCart={props.onHideCart} onConfirm={confirmHandler} />
-      )}
+      {shownCheckout && <CheckOut onConfirm={confirmHandler} />}
       {!shownCheckout && formButtons}
-    </React.Fragment>
+    </Fragment>
   );
 
   const orderingContent = <h2>Sending order...</h2>;
 
   const orderedContent = (
-    <React.Fragment>
+    <Fragment>
       <div className={styles.confirmed}>
         <h1>Order completed</h1>
         <p>Thank you for choosing Kumka Services</p>
       </div>
       <div className={styles.actions}>
-        <button className={styles.close} onClick={props.onHideCart}>
+        <button className={styles.close} onClick={hideCartHandler}>
           Close
         </button>
       </div>
-    </React.Fragment>
+    </Fragment>
   );
 
   return (
-    <Modal onHideCart={props.onHideCart}>
+    <Modal>
       {!isOrdering && !didOrder && cartContent}
       {isOrdering && orderingContent}
       {didOrder && orderedContent}

@@ -1,9 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './Modal.module.css';
+import { useDispatch } from 'react-redux';
+import { showCartAction } from '../../store/cart-ui-slice';
 
 const Backdrop = (props) => {
-  return <div className={styles.backdrop} onClick={props.onHideCart} />;
+  const dispatch = useDispatch();
+
+  const hideCartHandler = () => {
+    dispatch(showCartAction.hideCart());
+  };
+
+  return <div className={styles.backdrop} onClick={hideCartHandler} />;
 };
 
 const ModalWindow = (props) => {
@@ -19,10 +27,7 @@ const portalElement = document.getElementById('overlays');
 const Modal = (props) => {
   return (
     <React.Fragment>
-      {ReactDOM.createPortal(
-        <Backdrop onHideCart={props.onHideCart} />,
-        portalElement
-      )}
+      {ReactDOM.createPortal(<Backdrop />, portalElement)}
       {ReactDOM.createPortal(
         <ModalWindow>{props.children}</ModalWindow>,
         portalElement

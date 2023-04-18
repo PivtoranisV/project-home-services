@@ -2,9 +2,17 @@ import React, { useContext } from 'react';
 import useInput from '../../hooks/use-input';
 import styles from './CheckOut.module.css';
 import CartContext from '../../store/cart-context';
+import { useDispatch } from 'react-redux';
+import { showCartAction } from '../../store/cart-ui-slice';
 
 const CheckOut = (props) => {
   const ctx = useContext(CartContext);
+
+  const dispatch = useDispatch();
+
+  const hideCartHandler = () => {
+    dispatch(showCartAction.hideCart());
+  };
 
   const {
     value: nameInput,
@@ -135,7 +143,7 @@ const CheckOut = (props) => {
       <div className={styles.actions}>
         <button
           type="button"
-          onClick={props.onHideCart}
+          onClick={hideCartHandler}
           className={styles.cancel}
         >
           Cancel
