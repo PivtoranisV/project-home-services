@@ -1,29 +1,26 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from './ServiceItem.module.css';
 import ServiceItemForm from './ServiceItemForm';
-import CartContext from '../../store/cart-context';
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../../store/cart-slice';
 
 const Service = (props) => {
-  const ctx = useContext(CartContext);
+  const { id, name, description, price } = props;
 
+  const dispatch = useDispatch();
   const addToCartHandler = (hours) => {
-    ctx.addService({
-      id: props.id,
-      name: props.name,
-      price: props.price,
-      hours: hours,
-    });
+    dispatch(cartActions.addService({ id, name, price, hours }));
   };
 
   return (
     <li className={styles.service}>
       <div>
-        <h3>{props.name}</h3>
-        <div className={styles.description}>{props.description}</div>
-        <div className={styles.price}>${props.price.toFixed(2)}</div>
+        <h3>{name}</h3>
+        <div className={styles.description}>{description}</div>
+        <div className={styles.price}>${price.toFixed(2)}</div>
       </div>
       <div>
-        <ServiceItemForm id={props.id} onAddToCart={addToCartHandler} />
+        <ServiceItemForm id={id} onAddToCart={addToCartHandler} />
       </div>
     </li>
   );

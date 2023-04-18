@@ -1,26 +1,20 @@
-import React, { useContext, useState, useEffect } from 'react';
-import CartContext from '../../store/cart-context';
+import React, { useState, useEffect } from 'react';
 import CartIcon from '../Cart/CartIcon';
 import { useDispatch } from 'react-redux';
 import { showCartAction } from '../../store/cart-ui-slice';
+import { useSelector } from 'react-redux';
 
 import styles from './CartButton.module.css';
 
 const CartButton = () => {
   const [animationShown, setAnimationShown] = useState(false);
-  const ctx = useContext(CartContext);
+  const totalHours = useSelector((state) => state.cart.totalHours);
+  const services = useSelector((state) => state.cart.services);
 
   const dispatch = useDispatch();
-
   const showCartHandler = () => {
     dispatch(showCartAction.showCart());
   };
-
-  const { services } = ctx;
-
-  const totalHours = services.reduce((prev, current) => {
-    return prev + current.hours;
-  }, 0);
 
   const btnClasses = `${styles.button} ${animationShown ? styles.wiggle : ''}`;
 

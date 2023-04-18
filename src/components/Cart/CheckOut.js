@@ -1,13 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import useInput from '../../hooks/use-input';
 import styles from './CheckOut.module.css';
-import CartContext from '../../store/cart-context';
 import { useDispatch } from 'react-redux';
 import { showCartAction } from '../../store/cart-ui-slice';
+import { cartActions } from '../../store/cart-slice';
 
 const CheckOut = (props) => {
-  const ctx = useContext(CartContext);
-
   const dispatch = useDispatch();
 
   const hideCartHandler = () => {
@@ -68,7 +66,7 @@ const CheckOut = (props) => {
     resetAddress();
     resetPostal();
     resetCity();
-    ctx.clearCard();
+    dispatch(cartActions.clearCart());
   };
 
   const nameInputClasses = `${styles.control} ${

@@ -1,11 +1,11 @@
-import React, { useContext, useState, Fragment } from 'react';
-import CartContext from '../../store/cart-context';
+import React, { useState, Fragment } from 'react';
 import Modal from '../UI/Modal';
 import styles from './Cart.module.css';
 import CartItem from './CartItem';
 import CheckOut from './CheckOut';
 import { useDispatch } from 'react-redux';
 import { showCartAction } from '../../store/cart-ui-slice';
+import { useSelector } from 'react-redux';
 
 const Cart = () => {
   const [shownCheckout, setShownCheckout] = useState(false);
@@ -13,24 +13,16 @@ const Cart = () => {
   const [didOrder, setDidOrder] = useState(false);
 
   const dispatch = useDispatch();
-
   const hideCartHandler = () => {
     dispatch(showCartAction.hideCart());
   };
 
-  const ctx = useContext(CartContext);
-  const totalAmount = `$${ctx.totalAmount.toFixed(2)}`;
-  const hasServices = ctx.services.length > 0;
-  const totalHours = ctx.services.reduce((prev, current) => {
-    return prev + current.hours;
-  }, 0);
-
-  const addHandler = (service) => {
-    ctx.addService({ ...service, hours: 1 });
-  };
-  const removeHandler = (id) => {
-    ctx.removeService(id);
-  };
+  const services = useSelector((state) => state.cart.services);
+  const totalHours = useSelector((state) => state.cart.totalHours);
+  const totalAmount = useSelector((state) =>
+    Math.abs(state.cart.totalAmount.toFixed(2))
+  );
+  const hasServices = services.length > 0;
 
   const orderHandler = () => {
     setShownCheckout(true);
@@ -44,7 +36,7 @@ const Cart = () => {
         method: 'POST',
         body: JSON.stringify({
           user: userData,
-          order: ctx.services,
+          order: services,
         }),
       }
     );
@@ -54,14 +46,13 @@ const Cart = () => {
 
   const cartItems = (
     <ul className={styles['cart-items']}>
-      {ctx.services.map((service) => (
+      {services.map((service) => (
         <CartItem
+          id={service.id}
           key={service.id}
           name={service.name}
           price={service.price}
           hours={service.hours}
-          onRemove={removeHandler.bind(null, service.id)}
-          onAdd={addHandler.bind(null, service)}
         />
       ))}
     </ul>

@@ -1,7 +1,7 @@
+import { Fragment } from 'react';
 import Cart from './components/Cart/Cart';
 import Header from './components/Header/Header';
 import Services from './components/Services/Services';
-import CartProvider from './store/CartProvider';
 import Feedbacks from './components/Feedbacks/Feedbacks';
 import Footer from './components/Footer/Footer';
 
@@ -11,7 +11,7 @@ function App() {
   const showCart = useSelector((state) => state.cartUi.cartIsShowing);
 
   return (
-    <CartProvider>
+    <Fragment>
       <Header />
       <main>
         <Services />
@@ -21,7 +21,7 @@ function App() {
       <footer>
         <Footer />
       </footer>
-    </CartProvider>
+    </Fragment>
   );
 }
 
