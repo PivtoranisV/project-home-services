@@ -1,0 +1,45 @@
+.header {
+    text-align: center;
+    color: #fcfcd0;
+}
+
+.services {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 48px;
+}
+
+.item {
+    width: 200px;
+    margin: 0 20px 30px;
+    text-align: center;
+    list-style: none;
+}
+
+.image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    border-radius: 8px;
+    border: 2px solid #fcfcd0;
+}
+
+.item a {
+    text-decoration: none;
+    color: #fcfcd0;
+}
+
+.item a:hover {
+    color: #455e68
+}
+
+.item img {
+    width: 95%;
+    object-fit: cover;
+}
+
+.item h2 {
+    margin: 0 0 1rem 0;
+}

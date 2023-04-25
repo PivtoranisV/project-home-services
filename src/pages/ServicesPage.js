@@ -1,7 +1,8 @@
 import React from 'react';
+import AllServices from '../components/Services/AllServices';
 
 const ServicesPage = () => {
-  return <div>ServicesPage</div>;
+  return <AllServices />;
 };
 
 export default ServicesPage;
