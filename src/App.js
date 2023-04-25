@@ -10,11 +10,18 @@ import Footer from './components/Footer/Footer';
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
+import RootLayout from './pages/RootLayout';
 
 const router = createBrowserRouter([
-  { path: '/', element: <HomePage /> },
-  { path: 'services', element: <ServicesPage /> },
-  { path: 'services/:serviceId', element: <ServiceDetailPage /> },
+  {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      { path: '', element: <HomePage /> },
+      { path: 'services', element: <ServicesPage /> },
+      { path: 'services/:serviceId', element: <ServiceDetailPage /> },
+    ],
+  },
 ]);
 
 function App() {
@@ -23,15 +30,15 @@ function App() {
   return (
     <Fragment>
       <RouterProvider router={router} />
-      <Header />
+      {/* <Header />
       <main>
-        <Services />
-        {showCart && <Cart />}
-        <Feedbacks />
+        <Services /> */}
+      {showCart && <Cart />}
+      {/* <Feedbacks />
       </main>
       <footer>
         <Footer />
-      </footer>
+      </footer> */}
     </Fragment>
   );
 }

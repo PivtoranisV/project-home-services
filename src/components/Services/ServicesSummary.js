@@ -1,28 +1,36 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import styles from './ServicesSummary.module.css';
 
 const ServicesSummary = (props) => {
   return (
     <section className={styles.summary}>
-      <h2>House Cleaning Services</h2>
+      <h2>Kumka Services</h2>
       <p>
-        Getting your house cleaned is only a few clicks away.
+        Getting your house cleaned or maybe manicures, pedicures, massage and
+        much more is only a few clicks away.
         <em>
           <strong> Kumka </strong>
         </em>
-        is here for all your home needs. House cleaning is a serious job, so you
-        can let us do it to save time and energy.
+        is here for all your needs. Expert professionals offer you multiple
+        services at your home.
       </p>
       <p>
-        House cleaning is no easy task; with
+        There is no limit to the services you can get at home; with
         <em>
           <strong> Kumka</strong>
         </em>
-        , you can leave it to professionals. Kumka's house cleaning service
-        includes everything you need for a clean home. Our professionals are
-        well-trained and equipped to clean your house with the best tools.
+        , you can continue to feel very special.
       </p>
-      <button onClick={props.onShowList}>Book Now</button>
+      <p>
+        Even though taking a break from your hectic schedule can be challenging,
+        pampering yourself is equally important. Even hard workers occasionally
+        need to take a break to reflect, breathe, and unwind. So how about a
+        home massage or manicure and pedicure?
+      </p>
+      <h3>Leave your to-do list to us!</h3>
+      <Link to="/services">Check out our home services</Link>
     </section>
   );
 };

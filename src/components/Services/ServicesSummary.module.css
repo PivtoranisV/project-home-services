@@ -1,5 +1,4 @@
 .summary {
-    max-width: 40rem;
     width: 85%;
     margin: auto;
     margin-top: -10rem;
@@ -19,7 +18,7 @@
     margin-top: 0;
 }
 
-.summary button {
+.summary a {
     cursor: pointer;
     font: inherit;
     border: none;
@@ -28,9 +27,10 @@
     padding: 0.75rem 1.5rem;
     border-radius: 14px;
     font-weight: bold;
+    text-decoration: none;
 }
 
-.summary button:hover,
-.summary button:active {
+.summary a:hover,
+.summary a:active {
     background-color: #0f455b;
 }
