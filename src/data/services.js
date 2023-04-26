@@ -10,7 +10,7 @@ import pest from '../assets/pest-control.png';
 import disinfection from '../assets/disinfection.png';
 
 const servicesData = [
-  { image: cleaning, id: 's1', title: 'Home Cleaning' },
+  { image: cleaning, id: 'services', title: 'Home Cleaning' },
   { image: test, id: 's2', title: 'Test at Home' },
   { image: salonW, id: 's3', title: "Women's Salon" },
   { image: spaW, id: 's4', title: "Women's SPA" },

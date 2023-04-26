@@ -5,4 +5,7 @@
     background-color: #fcfcd0;
     margin-top: -10rem;
     position: relative;
+    max-width: 50rem;
+    width: 90%;
+    margin: -10rem auto 2rem;
 }
