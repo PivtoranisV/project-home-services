@@ -11,11 +11,13 @@ import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import RootLayout from './pages/RootLayout';
+import ErrorPage from './pages/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       { path: '', element: <HomePage /> },
       { path: 'services', element: <ServicesPage /> },
