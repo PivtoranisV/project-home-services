@@ -3,15 +3,33 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 6rem;
+    height: 9rem;
     background-color: #7ebfd9;
     color: #fcfcd0;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 0 5%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     z-index: 10;
+}
+
+.list {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+
+.list a {
+    text-decoration: none;
+    color: #317e9c;
+    margin-left: 1rem;
+}
+
+.list a:hover,
+.list a.active {
+    color: #fcfcd0;
 }
 
 .main-image {

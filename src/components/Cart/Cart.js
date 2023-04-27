@@ -3,9 +3,8 @@ import Modal from '../UI/Modal';
 import styles from './Cart.module.css';
 import CartItem from './CartItem';
 import CheckOut from './CheckOut';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { showCartAction } from '../../store/cart-ui-slice';
-import { useSelector } from 'react-redux';
 
 const Cart = () => {
   const [shownCheckout, setShownCheckout] = useState(false);

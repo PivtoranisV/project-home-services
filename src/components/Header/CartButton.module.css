@@ -12,6 +12,12 @@
     font-weight: bold;
 }
 
+@media (max-width: 560px) {
+    .button {
+        margin: auto;
+    }
+}
+
 .button:hover,
 .button:active {
     background-color: #0f455b;

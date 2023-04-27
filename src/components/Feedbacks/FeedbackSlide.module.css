@@ -1,6 +1,7 @@
 .feedback {
     font-size: larger;
     text-align: justify;
+    padding: 1rem;
 }
 
 .line {
@@ -14,8 +15,10 @@
 .name {
     text-align: center;
     color: #8a2b06;
+    padding-bottom: 1rem;
 }
 
 .date {
     text-align: end;
+    padding: 1rem;
 }
