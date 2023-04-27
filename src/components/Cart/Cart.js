@@ -81,7 +81,7 @@ const Cart = () => {
         </div>
         <div>
           <span>Total Amount</span>
-          <span className={styles.amount}>{totalAmount}</span>
+          <span className={styles.amount}>${totalAmount}</span>
         </div>
       </div>
       {shownCheckout && <CheckOut onConfirm={confirmHandler} />}
