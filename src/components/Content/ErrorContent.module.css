@@ -1,3 +1,9 @@
 .content {
     text-align: center;
+    color: #ad5502;
+    width: 300px;
+    border: 2px solid #fcfcd0;
+    border-radius: 14px;
+    margin: auto;
+    padding: 1rem 0;
 }
