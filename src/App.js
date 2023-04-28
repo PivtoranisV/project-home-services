@@ -10,6 +10,9 @@ import ServiceDetailPage, {
 } from './pages/ServiceDetailPage';
 import RootLayout from './pages/RootLayout';
 import ErrorPage from './pages/ErrorPage';
+import SpecialistsPage, {
+  loader as specialistsLoader,
+} from './pages/SpecialistsPage';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +22,11 @@ const router = createBrowserRouter([
     children: [
       { path: '', element: <HomePage /> },
       { path: 'services', element: <ServicesPage /> },
+      {
+        path: 'specialists',
+        element: <SpecialistsPage />,
+        loader: specialistsLoader,
+      },
       {
         path: 'services/:serviceId',
         element: <ServiceDetailPage />,

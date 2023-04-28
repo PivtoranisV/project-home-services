@@ -35,6 +35,16 @@ const Header = () => {
                 Services
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/specialists"
+                className={({ isActive }) =>
+                  isActive ? styles.active : undefined
+                }
+              >
+                Specialists
+              </NavLink>
+            </li>
           </ul>
         </nav>
         <CartButton />
