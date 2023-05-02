@@ -3,7 +3,7 @@ import styles from './SpecialistsList.module.css';
 
 const SpecialistsList = ({ specialists }) => {
   return (
-    <div>
+    <div className={styles.content}>
       <h1>Our professionals</h1>
       <ul className={styles.specialists}>
         {specialists.map((specialist) => (
