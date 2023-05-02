@@ -2,6 +2,12 @@
 
 This is a React application for ordering home services.
 
+## Links
+
+- [Link to Solution](https://github.com/PivtoranisV/project-home-services)
+
+- [Link to Live preview](https://home-services-40fc3.web.app)
+
 ## Features
 
 This app allows users to:
@@ -10,6 +16,15 @@ This app allows users to:
 - Add services to a cart
 - View their cart and remove services
 - Place an order for the selected services
+
+## Build with
+
+- React
+- CSS module
+- Redux
+- React Router
+- Firebase for database
+- React Slick
 
 ## Getting Started
 
